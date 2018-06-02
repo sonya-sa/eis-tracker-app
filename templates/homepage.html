@@ -51,8 +51,9 @@
       };
       return t;
 
+
     }(document, "script", "twitter-wjs"));</script>
-    <script> window.facebook = (function(d, s, id) {
+    <script>window.facebook = (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
@@ -87,7 +88,7 @@
           projectDisplayElInnerHtml += '<a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=' + '@' + project.agency + ' , ' + 'EIS ID:' + project.eis_id + '"> Tweet</a>';
           //projectDisplayElInnerHtml += '<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="my custom text"' +
           // ' data-show-count="false">Tweet</a>'
-          projectDisplayElInnerHtml += ''
+          projectDisplayElInnerHtml += ' ' + '<a class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></a>'; 
 
         }
 
@@ -97,7 +98,7 @@
       function initMap() {
         const map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 39.8283, lng: -98.5795},
-          zoom: 4
+          zoom: 3
         });
 
         {% for state_tuple in states_with_projects %}
@@ -131,5 +132,8 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6VEBiqDbMmsZ4STInovtQdNwdqduCseI&callback=initMap"
     async defer></script>
     <!-- <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text = "my custom text" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
+        <!-- twitter widget api -->
+    <a class="twitter-timeline"  href="https://twitter.com/hashtag/EnvironmentalImpactStatement" data-widget-id="999810728075771905">#EnvironmentalImpactStatement Tweets</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
   </body>
 </html>
