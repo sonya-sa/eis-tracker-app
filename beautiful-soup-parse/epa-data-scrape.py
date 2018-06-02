@@ -11,7 +11,7 @@ csv_writer = csv.writer(csv_file)
 csv_writer.writerow(['EIS ID', 'Title', 'Title Link', 'Document', 'EPA Comment Letter Date', 'Federal Register Date', 'Agency', 'State', 'Document Link','Comment Due Date', 'Contact Name', 'Contact Number'])
 
 #get request EIS data from EPA and bind to page variable
-page = requests.get("https://cdxnodengn.epa.gov/cdx-enepa-II/public/action/eis/search;jsessionid=C7ED30E19AAC674E7E6239A24502C7CF?d-446779-p=2&search=&commonSearch=openComment#results")
+page = requests.get("https://cdxnodengn.epa.gov/cdx-enepa-II/public/action/eis/search;jsessionid=C4B9ED80BAF1FF3C0D81E0F4AA7152A1?d-446779-p=1&search=&commonSearch=openComment#results")
 
 #creates an instance of the BeautifulSoup class to parse
 soup = BeautifulSoup(page.content, 'html.parser')
