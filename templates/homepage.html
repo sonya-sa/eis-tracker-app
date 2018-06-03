@@ -1,12 +1,5 @@
-<!-- <!doctype html>
-<html>
-<head>
-    <title>EIS Tracker</title>
-</head>
-<body>
-    EIS Tracker
-</body>
-</html> -->
+{%extends 'base.html'%}
+{% block content %}
 
 <!DOCTYPE html>
 <html>
@@ -14,6 +7,7 @@
     <title>My EIS Map</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -36,6 +30,8 @@
     <div class="projectData">
      <!--  /create another for loop/ -->
     </div>
+    
+
     <script>window.twttr = (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0],
         t = window.twttr || {};
@@ -53,6 +49,7 @@
 
 
     }(document, "script", "twitter-wjs"));</script>
+    
     <script>window.facebook = (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
@@ -60,80 +57,16 @@
   js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0';
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-    <script>
-      window.state_project_map = {};
 
-      function showProjectDataForState(state) {
-        const projects = state_project_map[state];
-
-        const projectDisplayEl = document.querySelector('.projectData');
-
-        let projectDisplayElInnerHtml = '';
-        for (let project of projects) {
-          console.log(project);
-          projectDisplayElInnerHtml += `<h2>Project: ${project.title}</h2>`;
-          
-          for (let property in project) {
-            // add condition that checks if (property == "_sa_instance_state"), continues if true, do below if false
-            if (property === "_sa_instance_state") {
-              continue
-            }
-            else {
-               projectDisplayElInnerHtml += '<div>' + property + ': ' + project[property] + '</div>';
-
-            }
-          }
-
-          // twitter button with custome text to include project details
-          projectDisplayElInnerHtml += '<a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=' + '@' + project.agency + ' , ' + 'EIS ID:' + project.eis_id + '"> Tweet</a>';
-          //projectDisplayElInnerHtml += '<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="my custom text"' +
-          // ' data-show-count="false">Tweet</a>'
-          projectDisplayElInnerHtml += ' ' + '<a class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></a>'; 
-
-        }
-
-        projectDisplayEl.innerHTML = projectDisplayElInnerHtml;
-      }
-
-      function initMap() {
-        const map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 39.8283, lng: -98.5795},
-          zoom: 3
-        });
-
-        {% for state_tuple in states_with_projects %}
-          const marker_{{state_tuple[0].state_id}} = new google.maps.Marker({
-              position: {lat: {{state_tuple[0].geo_lat}}, lng: {{state_tuple[0].geo_long}}},
-              title: 'EIS Tracker',
-              map: map,
-              label: '{{ state_tuple[1]|length }}',
-            });
-
-          projects_in_state = [];
-            {% for project in state_tuple[1] %}
-              var project = {};
-              {% for attr, value in project.__dict__.iteritems() %}
-                console.log(project['{{attr}}'] = '{{value}}');
-                project['{{attr}}'] = '{{value}}';
-              {% endfor %}
-              projects_in_state.push(project);
-            {% endfor %}
-
-          state_project_map['{{state_tuple[0].state_id}}'] = projects_in_state;
-
-          marker_{{state_tuple[0].state_id}}.addListener('click', function() {
-              showProjectDataForState('{{state_tuple[0].state_id}}');
-          });
-        {% endfor %}
-        console.log('state_project_map: ' + JSON.stringify(state_project_map));
-        }
-
-    </script>
+    <script src = '/static/states_with_projects.js'></script>
+    
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6VEBiqDbMmsZ4STInovtQdNwdqduCseI&callback=initMap"
     async defer></script>
-    <!-- <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text = "my custom text" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
         <!-- twitter widget api -->
     <a class="twitter-timeline"  href="https://twitter.com/hashtag/EnvironmentalImpactStatement" data-widget-id="999810728075771905">#EnvironmentalImpactStatement Tweets</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
   </body>
 </html>
+
+{% endblock %}
