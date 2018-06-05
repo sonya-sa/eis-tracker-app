@@ -1,37 +1,15 @@
 {%extends 'base.html'%}
 {% block content %}
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>My EIS Map</title>
-    <meta name="viewport" content="initial-scale=1.0">
-    <meta charset="utf-8">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 400px;
-        width: 100%
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>My EIS Map</h1>
+    
+    <h1>EIStracker</h1>
+    
     <div id="map"></div>
 
     <div class="projectData">
-     <!--  /create another for loop/ -->
+    
     </div>
     
-
+    <!-- twitter button api -->
     <script>window.twttr = (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0],
         t = window.twttr || {};
@@ -40,33 +18,34 @@
       js.id = id;
       js.src = "https://platform.twitter.com/widgets.js";
       fjs.parentNode.insertBefore(js, fjs);
-
       t._e = [];
       t.ready = function(f) {
         t._e.push(f);
       };
       return t;
+      }(document, "script", "twitter-wjs"));</script>
 
-
-    }(document, "script", "twitter-wjs"));</script>
-    
+    <!-- facebook button api -->
     <script>window.facebook = (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0';
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
 
+    <!-- diplays maps and project info for state -->
     <script src = '/static/states_with_projects.js'></script>
-    
+
+    <!-- googemaps api -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6VEBiqDbMmsZ4STInovtQdNwdqduCseI&callback=initMap"
     async defer></script>
-        <!-- twitter widget api -->
+
+    <!-- twitter timeline api -->
     <a class="twitter-timeline"  href="https://twitter.com/hashtag/EnvironmentalImpactStatement" data-widget-id="999810728075771905">#EnvironmentalImpactStatement Tweets</a>
 
+    <!-- calls twitter function -->
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-  </body>
-</html>
+
 
 {% endblock %}

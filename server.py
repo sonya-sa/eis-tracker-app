@@ -55,7 +55,6 @@ def all_state_with_projects():
         #<type 'datetime.datetime'>
         #<Project title=Pure Water San Diego Program North City Project state=[<State state_id=CA>]>
         #<type 'datetime.datetime'>
-
         state_project_relationships = Project_State.query.filter_by(state_id=state.state_id).all()
         print state_project_relationships
 
@@ -63,9 +62,6 @@ def all_state_with_projects():
         #if state has projects, enter for loop
         if len(state_project_relationships) > 0:
 
-            #returns all projects in state
-            #e.g. [<Project title=Southern Gardens Citrus Nursery LLC Permit to Release Genetically Engineered Citrus tristeza virus Draft Environmental Impact Statement state=[<State state_id=NAT>]>]
-            #projects_in_state = []
 
             #for each project in state, access EIS_data table by relationship
             #relationship: project_state_id = state_id
@@ -73,7 +69,7 @@ def all_state_with_projects():
             for relationship in state_project_relationships:
 
                 #query our EIS_data by eis_id and grab all info related to that project
-                #place project details into list
+                #place project details into dict
 
                 eis_datas = EIS_data.query.filter_by(eis_id=relationship.eis_id).all()
                 states_with_projects[state.state_id]['projects'] += [{
@@ -81,25 +77,16 @@ def all_state_with_projects():
                     'title': project.title, 
                     'title link': project.title_link,
                     'document': project.document,
-                    'EPA comment letter date': project.epa_comment_letter_date,
-                    'federal reigster date': project.federal_register_date,
-                    'Comment due date': project.comment_due_date,
-                    'download documents link': project.download_documents,
+                    'federal register date': project.federal_register_date.strftime("%m/%d/%y"),
+                    'Comment due date': project.comment_due_date.strftime("%m/%d/%y"),
                     'download link': project.download_link,
                     'contact name': project.contact_name,
-                    'contact phone': project.contact_phone
+                    'contact phone': project.contact_phone,
+                    'agency': project.agency,
+                    'state': state.state_id, 
 
 
                 } for project in eis_datas]
-
-
-                #states_with_projects[state.]
-
-
-            # states_with_projects.append([state, projects_in_state])
-
-    # state_dict = {'data' : states_with_projects}
-    #test_dict = str(states_with_projects)
 
 
     return jsonify(states_with_projects)

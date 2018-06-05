@@ -2,6 +2,7 @@
 
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from sqlalchemy_utils import PhoneNumber
 # This is the connection to the PostgreSQL database; we're getting
 # this through the Flask-SQLAlchemy helper library. On this, we can
 # find the `session` object, where we do most of our interactions
@@ -22,18 +23,18 @@ class EIS_data(db.Model):
     __tablename__ = "eis_data"
 
     eis_id = db.Column(db.Integer, primary_key = True)
-    title = db.Column(db.String(150), nullable=True)
+    title = db.Column(db.String(500), nullable=True)
     title_link = db.Column(db.String(1000), nullable =True)
     document = db.Column(db.String(50), nullable=True)
     epa_comment_letter_date = db.Column(db.DateTime, nullable=True)
     federal_register_date = db.Column(db.DateTime, nullable=True)
     comment_due_date = db.Column(db.DateTime, nullable=True)
-    agency = db.Column(db.String(50), nullable=True)
+    agency = db.Column(db.String(100), nullable=True)
     #state = db.Column(db.String(50), nullable=True)
     download_documents = db.Column(db.String(50), nullable=True)
     download_link = db.Column(db.String(1000), nullable=True)
-    contact_name = db.Column(db.String(500), nullable=True)
-    contact_phone = db.Column(db.String(500), nullable=True)
+    contact_name = db.Column(db.String(100), nullable=True)
+    contact_phone = db.Column(db.String(100), nullable=True)
     
     #defines relationship to State table and Project State table
     state = db.relationship("State", secondary="project_state",
@@ -51,7 +52,7 @@ class State(db.Model):
 
     __tablename__ = "states"
 
-    state_id = db.Column(db.String(3), primary_key= True)
+    state_id = db.Column(db.String(6), primary_key= True)
     geo_lat = db.Column(db.Float(15), nullable=False)
     geo_long = db.Column(db.Float(15), nullable=False)
 

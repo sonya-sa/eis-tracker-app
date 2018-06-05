@@ -6,6 +6,7 @@ from sqlalchemy import func
 from model import connect_to_db, db, EIS_data, State, Project_State
 from server import app
 
+
 def load_EIS_data(epa_scrape_all_info):
     """Load projects from open_comment.csv into database."""
 
@@ -31,13 +32,12 @@ def load_EIS_data(epa_scrape_all_info):
 
         if comment_due_date_str:
             comment_due_date = datetime.datetime.strptime(comment_due_date_str, "%m/%d/%y")
-        else:
-            comment_due_date = None
+        
 
         projects = EIS_data(eis_id=eis_id, title=title, title_link=title_link,
                             document=document, epa_comment_letter_date=epa_comment_letter_date,
                             federal_register_date=federal_register_date, comment_due_date=comment_due_date,
-                            agency=agency, download_link=download_link)
+                            agency=agency, download_link=download_link, contact_name=contact_name, contact_phone=contact_phone)
 
         #Add to the session to store info
         db.session.add(projects)
@@ -56,8 +56,6 @@ def load_States(states_coordinates):
 
         #unpack info; row.split(",")
         state_id, geo_lat, geo_long = row.split(",")
-        print geo_lat
-        print geo_long
 
         geo_lat = float(geo_lat)
         geo_long = float(geo_long)
@@ -101,7 +99,7 @@ if __name__ == "__main__":
     connect_to_db(app)
     db.create_all()
 
-    epa_scrape_all_info = "epa_scrape_all_info.csv"
+    epa_scrape_all_info = "epa_scrape_all_info2.csv"
     states_coordinates = "state_coordinates.csv"
     load_EIS_data(epa_scrape_all_info)
     load_States(states_coordinates)
