@@ -53,8 +53,12 @@ function displayMap(results) {
           label: String(state_dict.projects.length),
         });
 
-google.maps.event.addListener(marker,'click',function() {
-  map.setZoom(5);
+      marker.addListener('click', function() {
+          showProjectDataForState(state_id);
+      });
+
+      google.maps.event.addListener(marker,'click',function() {
+  map.setZoom(4);
   map.setCenter(marker.getPosition());
   });
     }
