@@ -2,6 +2,19 @@
 {% block content %}
     
     <h1>EIStracker</h1>
+
+    <ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" href="#about" data-tab="about">About EIStracker</a>
+    <div> Hello there</div>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#mymap">EIStracker Map</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#news">EIS News</a>
+  </li>
+</ul>
     
     <div id="map"></div>
 
@@ -42,10 +55,11 @@
     async defer></script>
 
     <!-- twitter timeline api -->
-    <a class="twitter-timeline"  href="https://twitter.com/hashtag/EnvironmentalImpactStatement" data-widget-id="999810728075771905">#EnvironmentalImpactStatement Tweets</a>
+    <div class= "twitter-timeline-widget" id = "twitter"><a class="twitter-timeline"  href="https://twitter.com/hashtag/EnvironmentalImpactStatement" data-widget-id="999810728075771905">#EnvironmentalImpactStatement Tweets</a></div>
 
     <!-- calls twitter function -->
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
 
 
 {% endblock %}
