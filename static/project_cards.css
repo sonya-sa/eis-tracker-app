@@ -33,6 +33,22 @@
   </div>
 </div>*/
 
-.card-body {
-  
+.row{
+  padding-top: 50px;
 }
+
+.my-footer {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+
+}
+
+.card-deck .card{
+  padding-bottom: 50px;
+}
+/*
+#map {
+  width:
+  height: 
+}*/
