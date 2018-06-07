@@ -21,7 +21,7 @@
     <div class="projectData">
     
     </div>
-    
+
     <!-- twitter button api -->
     <script>window.twttr = (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0],
@@ -36,7 +36,15 @@
         t._e.push(f);
       };
       return t;
-      }(document, "script", "twitter-wjs"));</script>
+      }(document, "script", "twitter-wjs"));
+    </script>
+<!-- create functions to show maps/areas where code is repeated (DRY) -->
+    <script> 
+    $( document ).ready(function() {
+    $('#map').show();
+    $('#twitter').hide();;
+});
+    </script>
 
     <!-- facebook button api -->
     <script>window.facebook = (function(d, s, id) {

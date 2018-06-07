@@ -8,25 +8,60 @@ function showProjectDataForState(state_id) {
   const projectDisplayEl = document.querySelector('.projectData');
 
   let projectDisplayElInnerHtml = '';
-  for (let project of projects) {
-    console.log(project);
-    projectDisplayElInnerHtml += `<div class="card"><h2>Project: ${project.title}</h2>`;
+
+  for (let i = 0; i < projects.length; i += 2) {
+    let leftProject = projects[i];
+    let rightProject = projects[i+1];
+
+    // projectDisplayElInnerHtml += `<div class="card"><div class="card-body"><div class="card-title">Project: ${project.title}</div>`;
+    projectDisplayElInnerHtml += '<div class="row">'
+    projectDisplayElInnerHtml += '<div class="col-sm-6">'
+    projectDisplayElInnerHtml += displayCard(leftProject)
+    projectDisplayElInnerHtml += '</div>'
+
+    if (rightProject != undefined) {
+      projectDisplayElInnerHtml += '<div class="col-sm-6">'
+      projectDisplayElInnerHtml += displayCard(rightProject)
+      projectDisplayElInnerHtml += '</div>'
+    }
+
+    projectDisplayElInnerHtml += '</div>'
+
+
     
-    for (let property in project) {
-       projectDisplayElInnerHtml += '<div>' + property + ': ' + project[property] + '</div>';
+  //   for (let property in project) {
+  //      projectDisplayElInnerHtml += '<div class="card-text">' + property + ': ' + project[property] + '</div>';
+  //   }
+  //   console.log(project['eis id']);
+
+  //   // twitter button with custome text to include project details
+  //   projectDisplayElInnerHtml += '<a class="twitter-share-button btn btn-primary" href="https://twitter.com/intent/tweet?text=' + 'There is a project open for public commenting' + ' : ' + 'EIS ID:' + project["eis id"] + '.' + 'Make your voice heard! Submit a comment by: '+ project["Comment due date"] + '"> Tweet</a>';
+  //   //projectDisplayElInnerHtml += '<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="my custom text"' +
+  //   // ' data-show-count="false">Tweet</a>'
+  //   projectDisplayElInnerHtml += ' ' + '<div class="btn btn-primary"><a class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></a></div>'; 
+  //   projectDisplayElInnerHtml += '</div></div>'
+  // }
+
+  projectDisplayEl.innerHTML = projectDisplayElInnerHtml;
+}
+}
+
+function displayCard(project){
+    let cardString = ''
+    cardString += `<div class="card"><div class="card-body"><div class="card-title">Project: ${project.title}</div>`;
+     for (let property in project) {
+       cardString += '<div class="card-text">' + property + ': ' + project[property] + '</div>';
     }
     console.log(project['eis id']);
 
     // twitter button with custome text to include project details
-    projectDisplayElInnerHtml += '<a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=' + 'There is a project open for public commenting' + ' : ' + 'EIS ID:' + project["eis id"] + '.' + 'Make your voice heard! Submit a comment by: '+ project["Comment due date"] + '"> Tweet</a>';
+    cardString += '<a class="twitter-share-button btn btn-primary" href="https://twitter.com/intent/tweet?text=' + 'There is a project open for public commenting' + ' : ' + 'EIS ID:' + project["eis id"] + '.' + 'Make your voice heard! Submit a comment by: '+ project["Comment due date"] + '"> Tweet</a>';
     //projectDisplayElInnerHtml += '<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="my custom text"' +
     // ' data-show-count="false">Tweet</a>'
-    projectDisplayElInnerHtml += ' ' + '<a class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></a>'; 
-    projectDisplayElInnerHtml += '</div>'
+    cardString += ' ' + '<div class="btn btn-primary"><a class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></a></div>'; 
+    cardString += '</div></div>'
+    return cardString;
   }
-
-  projectDisplayEl.innerHTML = projectDisplayElInnerHtml;
-}
 
 function displayMap(results) {
   states_with_projects = results;
@@ -83,6 +118,7 @@ function initMap() {
   } else if (location.hash==='#mymap') {
     $('#map').show();
     $('#twitter').hide();
+    $('.projectData').show();
   } else if (location.hash==='#about') {
     $('#map').hide();
     $('#twitter').hide();
