@@ -50,15 +50,15 @@ function displayCard(project){
     let cardString = ''
     cardString += `<div class="card"><div class="card-body"><div class="card-title">Project: ${project.title}</div>`;
      for (let property in project) {
-       cardString += '<div class="card-text">' + property + ': ' + project[property] + '</div>';
+       cardString += '<div class="card-text">' + property + ': ' + project[property] + '</div>';                              
     }
-    console.log(project['eis id']);
+    // console.log(project['eis id']);
 
-    // twitter button with custome text to include project details
-    cardString += '<div class= "card-text my-footer"><a class="twitter-share-button btn-twitter" href="https://twitter.com/intent/tweet?text=' + 'There is a project open for public commenting' + ' : ' + 'EIS ID:' + project["eis id"] + '.' + 'Make your voice heard! Submit a comment by: '+ project["Comment due date"] + '"> Tweet</a>';
-    //projectDisplayElInnerHtml += '<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="my custom text"' +
-    // ' data-show-count="false">Tweet</a>'
-    cardString += ' ' + '<div class="btn btn-primary"><a class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></a></div>'; 
+    // twitter button with custom text to include project details
+    cardString += '<div class= "card-text"><a class="btn btn-social-icon btn-twitter" href="https://twitter.com/intent/tweet?text=' + 'There is a project open for public commenting' + ' : ' + 'EIS ID:' + project["eis id"]  + '.' + 'Make your voice heard! Submit a comment by: '+ project["Comment due date"] + '"><span class="fa fa-twitter"></span></a>';
+    
+    // facebook button
+    cardString += ' ' + '<div class="fb-share-button"><a data-href="https://cdxnodengn.epa.gov/cdx-enepa-II/public/action/eis/search;jsessionid=983B403B2A0D99AA747FCF904B41DE8D?search=&amp;commonSearch=openComment#results"  data-size="large" data-mobile-iframe="false"><a class="btn btn-social-icon btn-facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcdxnodengn.epa.gov%2Fcdx-enepa-II%2Fpublic%2Faction%2Feis%2Fsearch%3Bjsessionid%3D983B403B2A0D99AA747FCF904B41DE8D%3Fsearch%26commonSearch%3DopenComment%23results&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><span class="fa fa-facebook"></span></a></div>';
     cardString += '</div></div></div>'
     return cardString;
   }
@@ -114,15 +114,18 @@ function initMap() {
     $('#map').hide();
     $('.projectData').hide();
     $('#twitter').show();
+    $('#text').hide();
 
   } else if (location.hash==='#mymap') {
     $('#map').show();
     $('#twitter').hide();
     $('.projectData').show();
+    $('#text').hide();
+
   } else if (location.hash==='#about') {
     $('#map').hide();
     $('#twitter').hide();
     $('.projectData').hide();
+    $('#text').show();
   }
-
 });
