@@ -73,17 +73,17 @@ def all_state_with_projects():
 
                 eis_datas = EIS_data.query.filter_by(eis_id=relationship.eis_id).all()
                 states_with_projects[state.state_id]['projects'] += [{
-                    'eis id': project.eis_id, 
+                    'EIS ID': project.eis_id, 
                     'title': project.title, 
                     'title link': project.title_link,
-                    'document': project.document,
-                    'federal register date': project.federal_register_date.strftime("%m/%d/%y"),
-                    'Comment due date': project.comment_due_date.strftime("%m/%d/%y"),
+                    'Document Type': project.document,
+                    'Federal Register Date': project.federal_register_date.strftime("%m/%d/%y"),
+                    'Comment Due Date': project.comment_due_date.strftime("%m/%d/%y"),
                     'download link': project.download_link,
-                    'contact name': project.contact_name,
-                    'contact phone': project.contact_phone,
-                    'agency': project.agency,
-                    'state': state.state_id, 
+                    'Contact Name': project.contact_name,
+                    'Contact Phone': project.contact_phone,
+                    'Agency': project.agency,
+                    'State': state.state_id, 
 
 
                 } for project in eis_datas]
