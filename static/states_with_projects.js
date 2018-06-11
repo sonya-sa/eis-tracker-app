@@ -32,7 +32,7 @@ function showProjectDataForState(state_id) {
 // organizes project information into cards
 function displayCard(project){
     let cardString = ''
-    cardString += `<div class="card"><div class="card-body"><div class="card-title"><b> Project: ${project.title}</b></div>`;
+    cardString += `<div class="card"><div class="card-body"><div class="card-title"><b> Project Title: ${project.title}</b></div>`;
      for (let property in project) {
       // check if property === undesired prop[]
       if (property === 'title' || property === 'title link' || property === 'download link') {
@@ -110,17 +110,27 @@ function initMap() {
     $('.projectData').hide();
     $('#twitter').show();
     $('#about').hide();
+    $('#learn').hide();
 
   } else if (location.hash==='#mymap') {
     $('#map').show();
     $('#twitter').hide();
     $('.projectData').show();
     $('#about').hide();
+    $('#learn').hide();
 
   } else if (location.hash==='#about') {
     $('#map').hide();
     $('#twitter').hide();
     $('.projectData').hide();
     $('#about').show();
+    $('#learn').hide();
+  }
+    else if (location.hash==='#learn') {
+    $('#map').hide();
+    $('#twitter').hide();
+    $('.projectData').hide();
+    $('#about').hide();
+    $('#learn').show();
   }
 });

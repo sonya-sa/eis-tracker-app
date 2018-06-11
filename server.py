@@ -48,13 +48,6 @@ def all_state_with_projects():
 
         # query for all projects in this state
         # relationship between Project_State table and EIS_data allows access to project info
-        # e.g return: [<Project States project_state_id= 13 state_id=CA>, <Project States project_state_id= 18 state_id=CA>, <Project States project_state_id= 28 state_id=CA>]
-        #<Project title=Mather Specific Plan Project state=[<State state_id=CA>]>
-        #<type 'datetime.datetime'>
-        #<Project title=Nevada and Northeastern California Greater Sage-Grouse Draft Resource Management Plan Amendment and Environmental Impact Statement state=[<State state_id=CA>, <State state_id=NV>]>
-        #<type 'datetime.datetime'>
-        #<Project title=Pure Water San Diego Program North City Project state=[<State state_id=CA>]>
-        #<type 'datetime.datetime'>
         state_project_relationships = Project_State.query.filter_by(state_id=state.state_id).all()
         print state_project_relationships
 
@@ -65,12 +58,10 @@ def all_state_with_projects():
 
             #for each project in state, access EIS_data table by relationship
             #relationship: project_state_id = state_id
-            #e.g. <Project States project_state_id= 24 state_id=AK>
             for relationship in state_project_relationships:
 
                 #query our EIS_data by eis_id and grab all info related to that project
                 #place project details into dict
-
                 eis_datas = EIS_data.query.filter_by(eis_id=relationship.eis_id).all()
                 states_with_projects[state.state_id]['projects'] += [{
                     'EIS ID': project.eis_id, 

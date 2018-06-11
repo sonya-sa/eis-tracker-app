@@ -76,6 +76,21 @@ class Project_State(db.Model):
 
         return "<Project States project_state_id= {} state_id={}>".format(self.project_state_id, self.state_id)
 
+#####################################################################
+#Test cases
+
+def example_data():
+    """Create sample data"""
+
+    project1 = EIS_data(eis_id=20180080, title='Wyoming Greater Sage-Grouse Draft Resource Management Plan Amendment and Environmental Impact Statement', \
+        title_link='https://cdxnodengn.epa.gov/cdx-enepa-II/public/action/eis/details?eisId=249065', document='Draft', epa_comment_letter_date=True, \
+        federal_register_date='2018-05-04 00:00:00', comment_due_date='2018-08-02 00:00:00', agency='Bureau of Land Management', download_documents=True, \
+        download_link='https://cdxnodengn.epa.gov/cdx-enepa-II/public/action/eis/details/downloadEisDocuments?eisId=249065', contact_name='Jennifer Fleuret', \
+        contact_phone='307-775-6329')
+#     WY = State(state_id='', geo_lat='', geo_long='')
+    db.session.add(project1)
+    db.session.commit()
+
 
 #####################################################################
 # Helper functions

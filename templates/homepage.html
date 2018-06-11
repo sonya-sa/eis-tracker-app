@@ -4,36 +4,76 @@
 
 <div class="jumbotron">
   <h1>EIStracker</h1>      
-  <p>The only application tracking Environmental Impact Statements open for public comment.</p>
+  <p>The only web application tracking Environmental Impact Statements open for public comment.
+  </p>
 </div>
 
     <ul class="nav nav-tabs">
+     <li class="nav-item">
+        <a class="nav-link" href="#learn">Learn More</a>
+     </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#mymap">Open Projects Map</a>
+
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#news">EIS Newsfeed</a>
+     </li>
+
       <li class="nav-item">
         <a class="nav-link" href="#about" data-tab="about">About EIStracker</a>
 
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#mymap">EIStracker Map</a>
-
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#news">EIS News</a>
-     </li>
     </ul>
 
-    <div id="about" class="justify-content-center align-items-center" style="">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+    <section id="about" class="about-section">
+      <div class="container">
+        <div class="row">
+            <h1>About EIStracker</h1>
+            <div class="col-xs-12">
+              <div class="about">
+              <p> EIStracker is a web application designed to better inform the public of Environmental Impact Statements currently open for public comment. The data used was obtained from the EPA's <a href="https://cdxnodengn.epa.gov/cdx-enepa-public/action/eis/search">EIS Database</a>.
+              </p>
+              <p> This site was used for educational purposes only. For the most up to date information, please visit the EPA's EIS database. For inquiries regarding the technologies used and methodologies of the developer, please contact <a href="sonya.salimy@gmail.com">Sonya Salimy</a>. 
+              </p>
+              <p> 
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="learn" class="about-section">
+      <div class="container">
+        <div class="row">
+            <h1>What is an EIS?</h1>
+            <div class="col-xs-12">
+              <div class="learn">
+              <p>The National Environmental Policy Act (NEPA) was enacted in 1969 to promote the enhancement of the environment and establish the Council on Environmental Quality (CEQ). It requires federal agenices to assess the environmental effects of proposed actions prior to decision making. The environmental review under NEPA has three levels of analysis: 
+                <li>Categorical Exlcusions determination(CATEX)</li>
+                <li>Environmental Assessment/Finding of No Significant Impact(EA/FONSI)
+                <li>Environmental Impact Statement(EIS)</li>
+              </p>
+
+              <p>An EIS is required for federal projects deemed to significantly impact the quality of the human environment. It is the most rigourous form of review for a project. Below is a summary of the EIS Process:
+                <li>(1) An agency publishes a Notice of Intent in the Federal Registry. The Notice of Intent informs the public of an upcoming project for analysis and describes how the public can get involved.</li>
+                <li>(2) A draft EIS is published for public review and comments are accepted for a minimum of 45 days.</li>
+                <li>(3) A final EIS is then published, which provides response to comments. A 30-day wait period is issued before final decisions can be made, and the EPA announces the Notive of Availabilty for of both draft and final EISs to the public.</li>
+                <li>(4) The EIS process ends with a Record of Decision (ROD) which explains the agency's decision.
+                <li>(5) In the event of a significant project change, a supplement EIS may be required and the public may comment on draft and final documents for that additional review.</li>
+
+              </p>
+              <p> For more information on NEPA and EISs, please visit: <a href="https://ceq.doe.gov/">NEPA.gov</a>.
+              </p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
 
     <div id="map"></div>
 
-    <div class="projectData">
-    
-    </div>
+    <div class="projectData"></div>
 
     <!-- twitter button api -->
     <script>window.twttr = (function(d, s, id) {
@@ -58,6 +98,7 @@
     $('#map').show();
     $('#twitter').hide();
     $('#about').hide();
+    $('#learn').hide();
     });
     </script>
 
