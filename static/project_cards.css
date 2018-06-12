@@ -1,23 +1,45 @@
 .row{
   padding-top: 50px;
 }
-
-.my-footer {
+/*
+.card-buttons {
   position: absolute;
   bottom: 10px;
   width: 100%;
 
 }
-
+*/
 
 .card-deck .card{
-  padding-bottom: 50px;
+  padding-bottom: 10px;
 }
 
+.card-text.card-buttons{
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-info {
+  flex: 1;
+}
+
+.card {
+  flex: 1;
+}
 /*#map {
   width:
   height: 
 }*/
+.twitter-timeline-widget {
+  display: flex;
+  justify-content: center;
+}
 
 /*
  * Social Buttons for Bootstrap

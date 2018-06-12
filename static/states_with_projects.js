@@ -13,7 +13,7 @@ function showProjectDataForState(state_id) {
     let rightProject = projects[i+1];
 
     // projectDisplayElInnerHtml += `<div class="card"><div class="card-body"><div class="card-title">Project: ${project.title}</div>`;
-    projectDisplayElInnerHtml += '<div class="row"> <div class="card-deck">'
+    projectDisplayElInnerHtml += '<div class="row">'
     projectDisplayElInnerHtml += '<div class="col-sm-6 d-flex align-items-stretch">'
     projectDisplayElInnerHtml += displayCard(leftProject)
     projectDisplayElInnerHtml += '</div>'
@@ -24,7 +24,7 @@ function showProjectDataForState(state_id) {
       projectDisplayElInnerHtml += '</div>'
     }
 
-    projectDisplayElInnerHtml += '</div></div>'
+    projectDisplayElInnerHtml += '</div>'
 
   projectDisplayEl.innerHTML = projectDisplayElInnerHtml;
 }
@@ -32,7 +32,7 @@ function showProjectDataForState(state_id) {
 // organizes project information into cards
 function displayCard(project){
     let cardString = ''
-    cardString += `<div class="card"><div class="card-body"><div class="card-title"><b> Project Title: ${project.title}</b></div>`;
+    cardString += `<div class="card"><div class="card-body"><div class="card-info"><div class="card-title"><b> Project Title: ${project.title}</b></div>`;
      for (let property in project) {
       // check if property === undesired prop[]
       if (property === 'title' || property === 'title link' || property === 'download link') {
@@ -42,7 +42,7 @@ function displayCard(project){
     }
 
     // twitter button with custom text to include project details
-    cardString += '<div class= "card-text"><a class="btn btn-social-icon btn-twitter" href="https://twitter.com/intent/tweet?hashtags=EnvironmentalImpactStatement&text=' + 'There is a project open for public commenting' + ' : ' + 'EIS ID:' + project['EIS ID']  + '.' + 'Make your voice heard! Submit a comment by: '+ project['Comment Due Date'] +  '"><span class="fa fa-twitter"></span></a>';
+    cardString += '</div><div class= "card-text card-buttons" ><a class="btn btn-social-icon btn-twitter" href="https://twitter.com/intent/tweet?hashtags=EnvironmentalImpactStatement&text=' + 'There is a project open for public commenting' + ' : ' + 'EIS ID:' + project['EIS ID']  + '.' + 'Make your voice heard! Submit a comment by: '+ project['Comment Due Date'] +  '"><span class="fa fa-twitter"></span></a>';
     
     // facebook button
     cardString += ' ' + '<div class="fb-share-button"><a data-href="https://cdxnodengn.epa.gov/cdx-enepa-II/public/action/eis/search;jsessionid=983B403B2A0D99AA747FCF904B41DE8D?search=&amp;commonSearch=openComment#results"  data-size="large" data-mobile-iframe="false"><a class="btn btn-social-icon btn-facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcdxnodengn.epa.gov%2Fcdx-enepa-II%2Fpublic%2Faction%2Feis%2Fsearch%3Bjsessionid%3D983B403B2A0D99AA747FCF904B41DE8D%3Fsearch%26commonSearch%3DopenComment%23results&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><span class="fa fa-facebook"></span></a></div>';
