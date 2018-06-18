@@ -27,7 +27,6 @@ def all_state_with_projects():
     #returns all projects with their EIS_data and State info(geo_lat/geo_long/state_id)
     # __repr__ displays project title and state
     states = State.query.all()
-    print states
 
     #returns all projects in states with projects
     # prints ([state, projects_in_state])
@@ -49,7 +48,6 @@ def all_state_with_projects():
         # query for all projects in this state
         # relationship between Project_State table and EIS_data allows access to project info
         state_project_relationships = Project_State.query.filter_by(state_id=state.state_id).all()
-        print state_project_relationships
 
 
         #if state has projects, enter for loop
@@ -87,7 +85,7 @@ def all_state_with_projects():
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the point
     # that we invoke the DebugToolbarExtension
-    app.debug = True
+    #app.debug = True
 
     connect_to_db(app)
 
