@@ -10,14 +10,14 @@ About the Developer
 
 Technologies Used
 ---
-**Frontend:**JavaScript (AJAX, JSON), HTML, CSS, jQuery, Bootstrap, Jinja 
-**Backend:**Python, Flask, PostgreSQL, SQLAlchemy, BeautifulSoup
+**Frontend:** JavaScript (AJAX, JSON), HTML, CSS, jQuery, Bootstrap, Jinja 
+**Backend:** Python, Flask, PostgreSQL, SQLAlchemy, BeautifulSoup
 **APIs:**Google Maps, Facebook, Twitter
 
 Features
 ---
 * Tweet feature with project specific details proloaded
-* Facebook feature with link to EIS database embessed into timeline
+* Facebook feature allowing for user to post message with link to EPA database
 * EPA feature linked to project details on EPA website
 * Download feature that allows EIS documents to be directly downloaded
 * Embedded twitter timeline to view related tweets
