@@ -18,10 +18,15 @@ Features
 ![](/static/projects.png)
 
 * Tweet feature with project specific details proloaded
+
+![](/static/tweet.png)
+
 * Facebook feature allowing for user to post message with link to EPA database
 * EPA feature linked to project details on EPA website
 * Download feature that allows EIS documents to be directly downloaded
 * Embedded twitter timeline to view related tweets
+
+![](/static/twittertimeline.png)
 
 Version 2.0
 ---
