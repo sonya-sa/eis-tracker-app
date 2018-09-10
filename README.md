@@ -4,9 +4,6 @@ EIStracker is a web application designed to better inform the public of Environm
 
 ![](/static/map.png) 
 
-Contents
----
-
 Technologies Used
 ---
 **Frontend:** JavaScript (AJAX, JSON), HTML, CSS, jQuery, Bootstrap, Jinja 
@@ -17,6 +14,9 @@ Technologies Used
 
 Features
 ---
+
+![](/static/projects.png)
+
 * Tweet feature with project specific details proloaded
 * Facebook feature allowing for user to post message with link to EPA database
 * EPA feature linked to project details on EPA website
